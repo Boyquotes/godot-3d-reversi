@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/undo.png-007075f1dc1053e03be5fee0f3bd9441.stex"
+path="res://.import/UIpack_vector.svg-dbcc2b38a83ab9ff0f410e87983b993e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://picture/undo.png"
-dest_files=[ "res://.import/undo.png-007075f1dc1053e03be5fee0f3bd9441.stex" ]
+source_file="res://theme/kenny/UIpack_vector.svg"
+dest_files=[ "res://.import/UIpack_vector.svg-dbcc2b38a83ab9ff0f410e87983b993e.stex" ]
 
 [params]
 

@@ -1,0 +1,133 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://theme/kenny/kenneyUI-blue.tres" type="Theme" id=1]
+[ext_resource path="res://theme/kenny/kenneyUI-yellow.tres" type="Theme" id=2]
+[ext_resource path="res://picture/close.png" type="Texture" id=3]
+[ext_resource path="res://picture/close_hover.png" type="Texture" id=4]
+[ext_resource path="res://menu/menu.gd" type="Script" id=5]
+
+[sub_resource type="Animation" id=1]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, -720 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 502.5, 185 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "slide"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Panel:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 0.4, 1.3 ),
+"update": 0,
+"values": [ Vector2( 502.5, -375 ), Vector2( 502.5, 185 ) ]
+}
+
+[node name="Menu" type="Node"]
+pause_mode = 2
+script = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 502.5
+margin_top = 185.0
+margin_right = 777.5
+margin_bottom = 535.0
+theme = ExtResource( 1 )
+
+[node name="Close" type="TextureButton" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -22.5
+margin_top = -14.0
+margin_right = 13.5
+margin_bottom = 22.0
+focus_neighbour_left = NodePath("../VBox/Continue")
+focus_neighbour_bottom = NodePath("../VBox/Continue")
+texture_normal = ExtResource( 3 )
+texture_hover = ExtResource( 4 )
+texture_focused = ExtResource( 4 )
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -112.5
+margin_top = -150.0
+margin_right = 112.5
+margin_bottom = 150.0
+theme = ExtResource( 2 )
+custom_constants/separation = 20
+
+[node name="Continue" type="Button" parent="Panel/VBox"]
+margin_right = 225.0
+margin_bottom = 60.0
+focus_neighbour_top = NodePath("../../Close")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Continue"
+
+[node name="NewGame" type="Button" parent="Panel/VBox"]
+margin_top = 80.0
+margin_right = 225.0
+margin_bottom = 140.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "NewGame"
+
+[node name="Setting" type="Button" parent="Panel/VBox"]
+margin_top = 160.0
+margin_right = 225.0
+margin_bottom = 220.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Setting"
+
+[node name="MainMenu" type="Button" parent="Panel/VBox"]
+margin_top = 240.0
+margin_right = 225.0
+margin_bottom = 300.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "MainMenu"
+
+[node name="Animation" type="AnimationPlayer" parent="Panel"]
+root_node = NodePath("../..")
+anims/RESET = SubResource( 1 )
+anims/slide = SubResource( 2 )
+
+[connection signal="pressed" from="Panel/Close" to="." method="do_hide"]
+[connection signal="pressed" from="Panel/VBox/Continue" to="." method="do_hide"]
+[connection signal="pressed" from="Panel/VBox/NewGame" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Panel/VBox/Setting" to="." method="_on_Setting_pressed"]
+[connection signal="pressed" from="Panel/VBox/MainMenu" to="." method="_on_main_menu_pressed"]

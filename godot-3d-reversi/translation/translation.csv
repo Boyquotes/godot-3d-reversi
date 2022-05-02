@@ -1,19 +1,18 @@
 keys,en,zh_TW
-BlackSide,Black Side,黑方
-WhiteSide,White Side,白方
+Player1,"Player 1","玩家 1"
+Player2,"Player 2","玩家 2"
 BlacksTurn,"Black's Turn",黑方回合
 WhitesTurn,"White's Turn",白方回合
 AIThinking1,"AI is thinking.  ","AI思考中.  "
 AIThinking2,"AI is thinking.. ","AI思考中.. "
 AIThinking3,"AI is thinking...","AI思考中..."
-Player,Player,玩家
+Human,Human,玩家
 Computer,Computer,電腦
-Weak,Weak,弱
-Medium,Medium,中
-Strong,Strong,強
-BlackFirst,"Black First",黑方先行
-WhiteFirst,"White First",白方先行
 Start,Start,開始
+Continue,Continue,繼續
+NewGame,"New Game",新遊戲
+Setting,Setting,設定
+MainMenu,"Main Menu",回到主畫面
 Texture,Texture,材質
 Fabric,Fabric,纖維
 Metal,Metal,金屬
@@ -29,7 +28,7 @@ AntiAliasing,Anti-Aliasing,抗鋸齒
 High,High,高
 Medium,Medium,中
 Low,Low,低
-Disable,Disable,關閉
+Disabled,Disabled,關閉
 Quality,Quality,光影品質
 Language,Language,Language
 English,English,English
@@ -38,6 +37,8 @@ OK,OK,確認
 Cancel,Cancel,取消
 Default,Default,預設値
 Next,"Who's turn:",換誰:
+V-sync,V-sync,垂直同步
+FrameRate,"Frame rate",畫面更新率
 Key1,MouseWheel:,滑鼠滾輪:
 Key2,CTRL+MouseWheel:,CTRL+滑鼠滾輪:
 Key3,"Key C:",C鍵:

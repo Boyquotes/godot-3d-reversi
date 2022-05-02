@@ -15,7 +15,6 @@ const LEFT_TOP = Vector3(-0.463, 0, -0.46)
 const STONE_SIZE = 0.13225
 const BOARD_SIZE = 8
 const BIAS = Vector3(STONE_SIZE/2, STONE_SIZE/2, STONE_SIZE/2)
-const LOCATER_SPEED = 18
 
 # use global coordinates, not local to node
 onready var space_state := get_world().get_direct_space_state()
@@ -24,26 +23,23 @@ onready var locater := $Locater
 onready var camera := get_node("/root/GameScene/Camera")
 onready var game_over_panel := get_node("/root/GameScene/GameOver")
 onready var pass_dialog := get_node("/root/GameScene/Pass")
-onready var regret_button := get_node("/root/GameScene/Buttons/Regret")
+onready var regret_button := get_node("/root/GameScene/Regret")
 onready var side_label := get_node("/root/GameScene/HUD/Turn")
 onready var side_label2 := get_node("/root/GameScene/Thinking")
 onready var counter := get_node("/root/GameScene/HUD")
 onready var black_counter := get_node("/root/GameScene/HUD/Black/BlackCount")
 onready var white_counter := get_node("/root/GameScene/HUD/White/WhiteCount")
+onready var global := get_node("/root/Global")
 
-var current_texture := "fabric"
-var animation_speed := 1.0
-var show_hint := true
 var ai_thinking := false
 var game_over := false
 var board: Board
 var current_player: Player
-var locater_target: Vector3
 
 func _ready():
-	assert(stone_scene and hint_scene and locater and regret_button)
+	assert(stone_scene and hint_scene and locater)
 	assert(pass_dialog and side_label and side_label2)
-	assert(counter and black_counter and white_counter)
+	assert(counter and black_counter and white_counter and global)
 	counter.hide()
 	locater.hide()
 
@@ -64,17 +60,16 @@ func _input(event):
 		var world_coordinate := convert_board_2_real_coordinate(board_coordinate)
 		
 		# double check, only put if selected and preseed, select it otherwise
-		if locater_target == world_coordinate:
+		if global.locater_target == world_coordinate:
 			put_to_game_board(board_coordinate)
 		else:
-			locater_target = world_coordinate
+			global.locater_target = world_coordinate
 	else:
 		handle_locater_by_ui_keys(event)
 
-func _process(delta):
+func _process(_delta):
 	if game_over:
 		return
-	locater.translation = lerp(locater.translation, locater_target, LOCATER_SPEED * delta)
 
 	if current_player != null and current_player.is_ai() and not ai_thinking:
 		ai_thinking = true
@@ -84,7 +79,7 @@ func _process(delta):
 func put_to_game_board(board_coordinate: Array):
 	if board.can_put(board_coordinate[0], board_coordinate[1], current_player.color):
 		board.put(board_coordinate[0], board_coordinate[1], current_player.color)
-		locater_target = convert_board_2_real_coordinate(board_coordinate)
+		global.locater_target = convert_board_2_real_coordinate(board_coordinate)
 		
 		var me := current_player
 		var enemy := current_player.next_player
@@ -115,27 +110,27 @@ func put_to_game_board(board_coordinate: Array):
 
 func handle_locater_by_ui_keys(event):
 	if event.is_action_pressed("ui_left", true):
-		var board_coordinate := convert_real_2_board_coordinate(locater.translation)
+		var board_coordinate := convert_real_2_board_coordinate(global.locater_target)
 		board_coordinate[0] -= 1
 		if check_board_coordinate(board_coordinate):
-			locater_target = convert_board_2_real_coordinate(board_coordinate)
+			global.locater_target = convert_board_2_real_coordinate(board_coordinate)
 	elif event.is_action_pressed("ui_right", true):
-		var board_coordinate := convert_real_2_board_coordinate(locater.translation)
+		var board_coordinate := convert_real_2_board_coordinate(global.locater_target)
 		board_coordinate[0] += 1
 		if check_board_coordinate(board_coordinate):
-			locater_target = convert_board_2_real_coordinate(board_coordinate)
+			global.locater_target = convert_board_2_real_coordinate(board_coordinate)
 	elif event.is_action_pressed("ui_up", true):
-		var board_coordinate := convert_real_2_board_coordinate(locater.translation)
+		var board_coordinate := convert_real_2_board_coordinate(global.locater_target)
 		board_coordinate[1] -= 1
 		if check_board_coordinate(board_coordinate):
-			locater_target = convert_board_2_real_coordinate(board_coordinate)
+			global.locater_target = convert_board_2_real_coordinate(board_coordinate)
 	elif event.is_action_pressed("ui_down", true):
-		var board_coordinate := convert_real_2_board_coordinate(locater.translation)
+		var board_coordinate := convert_real_2_board_coordinate(global.locater_target)
 		board_coordinate[1] += 1
 		if check_board_coordinate(board_coordinate):
-			locater_target = convert_board_2_real_coordinate(board_coordinate)
+			global.locater_target = convert_board_2_real_coordinate(board_coordinate)
 	elif event.is_action_pressed("ui_accept"):
-		var board_coordinate := convert_real_2_board_coordinate(locater.translation)
+		var board_coordinate := convert_real_2_board_coordinate(global.locater_target)
 		put_to_game_board(board_coordinate)
 
 func check_board_coordinate(board_coordinate: Array) -> bool:
@@ -185,8 +180,8 @@ func create_stone_mesh(s: int, pos: Array) -> Spatial:
 	var world_coordinate := convert_board_2_real_coordinate(pos)
 	new_stone.translation = world_coordinate
 	new_stone.set_to_color(s)
-	new_stone.set_texture(current_texture)
-	new_stone.set_animation_speed(animation_speed)
+	new_stone.set_texture(global.stone_texture)
+	new_stone.set_animation_speed(global.animation_speed)
 	$Stones.add_child(new_stone)
 	new_stone.play_anmiation_put()
 	return new_stone
@@ -203,7 +198,7 @@ func _deal_game_over():
 	locater.hide()
 
 func _update_hints():
-	if show_hint and current_player.is_human():
+	if global.hint_show and current_player.is_human():
 		for hint in $Hints.get_children():
 			hint.queue_free()
 		for ava in board.all_valid_point(current_player.color):
@@ -251,7 +246,7 @@ func _on_game_start(player1_role: String, player2_role: String, first_color: Str
 	
 	var t := convert_board_2_real_coordinate([4, 4])
 	locater.translation = t
-	locater_target = t
+	global.locater_target = t
 	locater.show()
 	counter.show()
 		
@@ -268,7 +263,6 @@ func _clean_up():
 		stone.queue_free()
 
 func _on_texture_change(texture):
-	current_texture = texture
 	$Mesh.set_texture(texture)
 	for stone in $Stones.get_children():
 		stone.set_texture(texture)
@@ -280,12 +274,10 @@ func _on_animation_change(speed):
 	else:
 		# false means pause
 		locater.get_child(1).stop(false)
-	animation_speed = speed
 	for stone in $Stones.get_children():
 		stone.set_animation_speed(speed)
 
 func _on_Setting_hint_change(show):
-	show_hint = show
 	if show:
 		_update_hints()
 	else:

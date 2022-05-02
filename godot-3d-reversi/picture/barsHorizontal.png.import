@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/fabric.png-0f6eadd5a3e8356aabc77041128af1e6.stex"
+path="res://.import/barsHorizontal.png-7fcf030ebbeb128397c9868b97e8b73c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://material/fabric.png"
-dest_files=[ "res://.import/fabric.png-0f6eadd5a3e8356aabc77041128af1e6.stex" ]
+source_file="res://picture/barsHorizontal.png"
+dest_files=[ "res://.import/barsHorizontal.png-7fcf030ebbeb128397c9868b97e8b73c.stex" ]
 
 [params]
 

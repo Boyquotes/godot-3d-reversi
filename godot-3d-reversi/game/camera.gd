@@ -1,15 +1,15 @@
 extends Camera
 
 # move z to 0.375, move y to 0.85
-const TARGET = Vector3(0, 0.85, 0.375)
+const TARGET = Vector3(0, 0.85, 0.313)
 const SPEED = 1.875
 
-const ROTATE_TARGET_X = deg2rad(-72)
+const ROTATE_TARGET_X = deg2rad(-75)
 const ROTATE_TARGET_Y = 0
 const FOV_TARGET = 75
 
-const THRESHOLD = 1e-3
-const START_GAME = 0.01
+const THRESHOLD = 1e-2
+const START_GAME = 1e-2
 
 const FOV_MIN = 50
 const FOV_MAX = 90

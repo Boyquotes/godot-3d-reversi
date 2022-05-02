@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://theme/default_theme.tres" type="Theme" id=1]
-[ext_resource path="res://theme/fonts/AnonymousPro-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://theme/kenny/kenneyUI-blue.tres" type="Theme" id=1]
+[ext_resource path="res://theme/fonts/AnonymousPro-Regular.woff2" type="DynamicFontData" id=2]
 [ext_resource path="res://info/info.gd" type="Script" id=3]
+[ext_resource path="res://theme/kenny/kenneyUI-yellow.tres" type="Theme" id=4]
 
 [sub_resource type="Animation" id=21]
 length = 0.001
@@ -87,8 +88,7 @@ tracks/1/keys = {
 "values": [ Vector2( 640, 360 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=20]
-outline_size = 1
+[sub_resource type="DynamicFont" id=24]
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
@@ -96,7 +96,7 @@ font_data = ExtResource( 2 )
 margin_left = 640.0
 margin_right = 1920.0
 margin_bottom = 720.0
-theme = ExtResource( 1 )
+theme = ExtResource( 4 )
 script = ExtResource( 3 )
 
 [node name="Fold" type="AnimationPlayer" parent="."]
@@ -128,20 +128,17 @@ margin_top = -255.0
 margin_right = -143.0
 margin_bottom = 159.0
 size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label1" type="Label" parent="Keys"]
 margin_right = 208.0
-margin_bottom = 57.0
+margin_bottom = 59.0
 size_flags_vertical = 3
 text = "Key1"
 
 [node name="Label2" type="Label" parent="Keys"]
-margin_top = 61.0
+margin_top = 63.0
 margin_right = 208.0
-margin_bottom = 119.0
+margin_bottom = 123.0
 size_flags_vertical = 3
 text = "Key2"
 __meta__ = {
@@ -149,9 +146,9 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="Keys"]
-margin_top = 123.0
+margin_top = 127.0
 margin_right = 208.0
-margin_bottom = 181.0
+margin_bottom = 186.0
 size_flags_vertical = 3
 text = "Key3"
 __meta__ = {
@@ -159,9 +156,9 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="Keys"]
-margin_top = 185.0
+margin_top = 190.0
 margin_right = 208.0
-margin_bottom = 243.0
+margin_bottom = 250.0
 size_flags_vertical = 3
 text = "Key4"
 __meta__ = {
@@ -169,9 +166,9 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="Keys"]
-margin_top = 247.0
+margin_top = 254.0
 margin_right = 208.0
-margin_bottom = 305.0
+margin_bottom = 313.0
 size_flags_vertical = 3
 text = "Key5"
 __meta__ = {
@@ -179,9 +176,9 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="Keys"]
-margin_top = 309.0
+margin_top = 317.0
 margin_right = 208.0
-margin_bottom = 366.0
+margin_bottom = 377.0
 size_flags_vertical = 3
 text = "Key6"
 __meta__ = {
@@ -189,9 +186,9 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="Keys"]
-margin_top = 370.0
+margin_top = 381.0
 margin_right = 208.0
-margin_bottom = 413.0
+margin_bottom = 414.0
 text = "Key7"
 
 [node name="Infos" type="VBoxContainer" parent="."]
@@ -211,15 +208,15 @@ __meta__ = {
 
 [node name="Label1" type="Label" parent="Infos"]
 margin_right = 515.0
-margin_bottom = 57.0
+margin_bottom = 59.0
 size_flags_vertical = 3
 text = "Info1"
 align = 2
 
 [node name="Label2" type="Label" parent="Infos"]
-margin_top = 61.0
+margin_top = 63.0
 margin_right = 515.0
-margin_bottom = 119.0
+margin_bottom = 123.0
 size_flags_vertical = 3
 text = "Info2"
 align = 2
@@ -228,9 +225,9 @@ __meta__ = {
 }
 
 [node name="Label3" type="Label" parent="Infos"]
-margin_top = 123.0
+margin_top = 127.0
 margin_right = 515.0
-margin_bottom = 181.0
+margin_bottom = 186.0
 size_flags_vertical = 3
 text = "Info3"
 align = 2
@@ -239,9 +236,9 @@ __meta__ = {
 }
 
 [node name="Label4" type="Label" parent="Infos"]
-margin_top = 185.0
+margin_top = 190.0
 margin_right = 515.0
-margin_bottom = 243.0
+margin_bottom = 250.0
 size_flags_vertical = 3
 text = "Info4"
 align = 2
@@ -250,9 +247,9 @@ __meta__ = {
 }
 
 [node name="Label5" type="Label" parent="Infos"]
-margin_top = 247.0
+margin_top = 254.0
 margin_right = 515.0
-margin_bottom = 305.0
+margin_bottom = 313.0
 size_flags_vertical = 3
 text = "Info5"
 align = 2
@@ -261,9 +258,9 @@ __meta__ = {
 }
 
 [node name="Label6" type="Label" parent="Infos"]
-margin_top = 309.0
+margin_top = 317.0
 margin_right = 515.0
-margin_bottom = 366.0
+margin_bottom = 377.0
 size_flags_vertical = 3
 text = "Info6"
 align = 2
@@ -272,9 +269,9 @@ __meta__ = {
 }
 
 [node name="Label7" type="Label" parent="Infos"]
-margin_top = 370.0
+margin_top = 381.0
 margin_right = 515.0
-margin_bottom = 413.0
+margin_bottom = 414.0
 text = "Info7"
 align = 2
 
@@ -301,7 +298,7 @@ margin_bottom = 631.0
 focus_previous = NodePath("../Ok")
 focus_mode = 2
 theme = ExtResource( 1 )
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 24 )
 shortcut_in_tooltip = false
 text = "[Source Code]"
 underline = 1

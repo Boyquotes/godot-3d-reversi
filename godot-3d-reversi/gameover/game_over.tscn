@@ -1,9 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://theme/default_theme.tres" type="Theme" id=1]
+[ext_resource path="res://theme/kenny/kenneyUI-yellow.tres" type="Theme" id=1]
 [ext_resource path="res://gameover/game_over_panel.gd" type="Script" id=2]
-[ext_resource path="res://theme/fonts/Boku2-Regular.otf" type="DynamicFontData" id=5]
-[ext_resource path="res://theme/fonts/AnonymousPro-Regular.ttf" type="DynamicFontData" id=6]
 
 [sub_resource type="Animation" id=2]
 length = 0.001
@@ -88,14 +86,6 @@ tracks/1/keys = {
 "values": [ Vector2( 640, 360 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="DynamicFont" id=1]
-size = 72
-outline_size = 2
-outline_color = Color( 0, 0, 0, 1 )
-use_filter = true
-font_data = ExtResource( 6 )
-fallback/0 = ExtResource( 5 )
-
 [node name="GameOver" type="Control"]
 margin_left = 640.0
 margin_right = 1920.0
@@ -118,9 +108,6 @@ margin_top = -150.0
 margin_right = 250.0
 margin_bottom = 150.0
 color = Color( 0.317647, 0.454902, 1, 0.705882 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="HBox" type="HBoxContainer" parent="."]
 anchor_left = 0.5
@@ -138,7 +125,7 @@ __meta__ = {
 
 [node name="NewGame" type="Button" parent="HBox"]
 margin_right = 163.0
-margin_bottom = 47.0
+margin_bottom = 57.251
 size_flags_horizontal = 3
 text = "NewGame"
 __meta__ = {
@@ -148,7 +135,7 @@ __meta__ = {
 [node name="Close" type="Button" parent="HBox"]
 margin_left = 193.0
 margin_right = 357.0
-margin_bottom = 47.0
+margin_bottom = 57.251
 size_flags_horizontal = 3
 text = "Close"
 __meta__ = {
@@ -164,7 +151,6 @@ margin_left = -279.0
 margin_top = -90.0
 margin_right = 280.0
 margin_bottom = 69.0
-custom_fonts/font = SubResource( 1 )
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

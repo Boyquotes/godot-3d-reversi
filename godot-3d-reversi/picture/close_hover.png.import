@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/user.png-7ba55356218b551f29749fb562d4fb03.stex"
+path="res://.import/close_hover.png-8eb5d51f3e9f3c04f7470b35db5af48f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://picture/user.png"
-dest_files=[ "res://.import/user.png-7ba55356218b551f29749fb562d4fb03.stex" ]
+source_file="res://picture/close_hover.png"
+dest_files=[ "res://.import/close_hover.png-8eb5d51f3e9f3c04f7470b35db5af48f.stex" ]
 
 [params]
 
